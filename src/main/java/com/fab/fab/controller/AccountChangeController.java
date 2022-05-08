@@ -6,6 +6,7 @@ import com.fab.fab.dto.MessageDto;
 import com.fab.fab.model.AccountChangeModel;
 import com.fab.fab.service.AccountChangeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +38,7 @@ public class AccountChangeController {
 
     }
 
-    @GetMapping
+    @GetMapping( produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?> getAccountChanges(){
         
         try{

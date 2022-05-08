@@ -1,16 +1,15 @@
 package com.fab.fab.model;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -28,17 +27,23 @@ public class CustomerModel {
     private String customerName;
     private String customerEmail;
     private String customerMobile;
+
+    @Lob
+    private String customerPhoto;
+
     private LocalDateTime createdAt;
 
     public CustomerModel() {
     }
 
     public CustomerModel(int customerNumber, String customerName, String customerEmail, String customerMobile,
+            String customerPhoto,
             LocalDateTime createdAt) {
         this.customerNumber = customerNumber;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.customerMobile = customerMobile;
+        this.customerPhoto = customerPhoto;
         this.createdAt = createdAt;
     }
 
@@ -124,6 +129,20 @@ public class CustomerModel {
      */
     public void setAccount(AccountModel account) {
         this.account = account;
+    }
+
+    /**
+     * @return String return the customerPhoto
+     */
+    public String getCustomerPhoto() {
+        return customerPhoto;
+    }
+
+    /**
+     * @param customerPhoto the customerPhoto to set
+     */
+    public void setCustomerPhoto(String customerPhoto) {
+        this.customerPhoto = customerPhoto;
     }
 
 }

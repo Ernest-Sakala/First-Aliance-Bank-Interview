@@ -29,12 +29,14 @@ public class AccountModel {
 
     private String visa;
     private String internet;
+    private String approved;
+    private LocalDateTime approvedDate;
     private LocalDateTime createdAt;
 
     public AccountModel() {
     }
 
-    public AccountModel(int accountId, BranchModel branch, CustomerModel customer, String visa, String internet,
+    public AccountModel(int accountId, BranchModel branch, CustomerModel customer, String visa, String internet, String approved, LocalDateTime approvedDate,
             LocalDateTime createdAt) {
         this.accountId = accountId;
         this.branch = branch;
@@ -42,6 +44,8 @@ public class AccountModel {
         this.visa = visa;
         this.internet = internet;
         this.createdAt = createdAt;
+        this.approved = approved;
+        this.approvedDate = approvedDate;
     }
 
     /**
@@ -126,6 +130,35 @@ public class AccountModel {
      */
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+
+    /**
+     * @return String return the approved
+     */
+    public String getApproved() {
+        return approved;
+    }
+
+    /**
+     * @param approved the approved to set
+     */
+    public void setApproved(String approved) {
+        this.approved = approved;
+    }
+
+    /**
+     * @return LocalDateTime return the approvedDate
+     */
+    public LocalDateTime getApprovedDate() {
+        return approvedDate;
+    }
+
+    /**
+     * @param approvedDate the approvedDate to set
+     */
+    public void setApprovedDate(LocalDateTime approvedDate) {
+        this.approvedDate = approvedDate;
     }
 
 }

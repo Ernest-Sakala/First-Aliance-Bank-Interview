@@ -1,15 +1,15 @@
 package com.fab.fab.controller;
 
 import com.fab.fab.dto.MessageDto;
-import com.fab.fab.model.CustomerModel;
 import com.fab.fab.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("api/customers")
@@ -19,11 +19,11 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<?> addCustomer(@RequestBody CustomerModel customerModel){
+    public ResponseEntity<?> addCustomer(@RequestPart(value = "photo") MultipartFile photo, @RequestPart(value = "customerDto") String customerDto){
         
         try{
 
-            customerService.addCustomer(customerModel);
+            customerService.addCustomer(photo, customerDto);
 
             return ResponseEntity.ok(new MessageDto("Customer Added Successfully"));
 
