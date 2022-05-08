@@ -1,11 +1,17 @@
 package com.fab.fab.model;
 
 import java.time.LocalDateTime;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "customer")
@@ -14,6 +20,10 @@ public class CustomerModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerNumber;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private AccountModel account;
 
     private String customerName;
     private String customerEmail;
@@ -100,6 +110,20 @@ public class CustomerModel {
      */
     public void setCustomerMobile(String customerMobile) {
         this.customerMobile = customerMobile;
+    }
+
+    /**
+     * @return AccountModel return the account
+     */
+    public AccountModel getAccount() {
+        return account;
+    }
+
+    /**
+     * @param account the account to set
+     */
+    public void setAccount(AccountModel account) {
+        this.account = account;
     }
 
 }
